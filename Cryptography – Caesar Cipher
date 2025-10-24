@@ -1,0 +1,18 @@
+# caesar_cipher.py
+def encrypt(text, shift):
+    result = ''
+    for c in text:
+        if c.isalpha():
+            base = 'A' if c.isupper() else 'a'
+            result += chr((ord(c) - ord(base) + shift) % 26 + ord(base))
+        else:
+            result += c
+    return result
+
+def decrypt(cipher, shift):
+    return encrypt(cipher, -shift)
+
+msg = "Hacktoberfest Rocks"
+enc = encrypt(msg, 3)
+print(enc)
+print(decrypt(enc, 3))
